@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="row">
+    <div style="margin-bottom: 10px;margin-left: 15px">
+        <a class="btn btn-success" href="/admin/add/">
+             Add User
+        </a>
+        
+        <a class="btn btn-success" href="/admin/add/depart/">
+             Add Department
+        </a>
+    </div>
+</div>
+    <table class = "table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Gender</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in queryset %}
+            <tr>
+            <th>{{ row.id }}</th>
+            <th>{{ row.username }}</th>
+            <th>{{ row.get_gender_display }}</th>
+            <th>{{ row.depart.title }}</th>
+            </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+{% endblock %}
